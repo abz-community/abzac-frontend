@@ -1,0 +1,41 @@
+## Ссылки на документацию
+
+- **Для стилей** - Tailwind: [https://tailwindcss.com/docs/background-color](https://tailwindcss.com/docs/background-color)
+- **Для роутинга** - React Router: [https://reactrouter.com/start/declarative/routing](https://reactrouter.com/start/declarative/routing)
+
+## Настройки стилей
+
+В `index.css` есть примеры кастомных цветов (в Tailwind есть набор дефолтных). По такому же принципу добавляй свои, если нужно. Шрифт уже добавлен и по дефолту будет тот который у тебя в дизе
+
+В `App.tsx` показал, как ими пользоваться.
+
+## Настройки VS Code
+
+В `settings.json` (погугли как открыть его в VS Code) вставь вот это:
+
+```json
+    "[javascript]": {
+        "editor.defaultFormatter": "biomejs.biome"
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "biomejs.biome"
+    },
+    "[tailwindcss]": {
+        "editor.defaultFormatter": "biomejs.biome"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "biomejs.biome"
+    },
+    "[vue]": {
+        "editor.defaultFormatter": "biomejs.biome"
+    },
+    "[javascriptreact]": {
+        "editor.defaultFormatter": "biomejs.biome"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "biomejs.biome"
+    },
+    "[css]": {
+        "editor.defaultFormatter": "biomejs.biome"
+    }
+```
