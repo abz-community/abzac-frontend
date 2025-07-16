@@ -9,38 +9,130 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as LibraryRouteImport } from './routes/library'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProfileUploadRouteImport } from './routes/profile/upload'
+import { Route as ProfileSettingsRouteImport } from './routes/profile/settings'
+import { Route as ProfileQuotesRouteImport } from './routes/profile/quotes'
+import { Route as ProfileAchievementsRouteImport } from './routes/profile/achievements'
 
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LibraryRoute = LibraryRouteImport.update({
+  id: '/library',
+  path: '/library',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProfileUploadRoute = ProfileUploadRouteImport.update({
+  id: '/upload',
+  path: '/upload',
+  getParentRoute: () => ProfileRoute,
+} as any)
+const ProfileSettingsRoute = ProfileSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => ProfileRoute,
+} as any)
+const ProfileQuotesRoute = ProfileQuotesRouteImport.update({
+  id: '/quotes',
+  path: '/quotes',
+  getParentRoute: () => ProfileRoute,
+} as any)
+const ProfileAchievementsRoute = ProfileAchievementsRouteImport.update({
+  id: '/achievements',
+  path: '/achievements',
+  getParentRoute: () => ProfileRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/library': typeof LibraryRoute
+  '/profile': typeof ProfileRouteWithChildren
+  '/profile/achievements': typeof ProfileAchievementsRoute
+  '/profile/quotes': typeof ProfileQuotesRoute
+  '/profile/settings': typeof ProfileSettingsRoute
+  '/profile/upload': typeof ProfileUploadRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/library': typeof LibraryRoute
+  '/profile': typeof ProfileRouteWithChildren
+  '/profile/achievements': typeof ProfileAchievementsRoute
+  '/profile/quotes': typeof ProfileQuotesRoute
+  '/profile/settings': typeof ProfileSettingsRoute
+  '/profile/upload': typeof ProfileUploadRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/library': typeof LibraryRoute
+  '/profile': typeof ProfileRouteWithChildren
+  '/profile/achievements': typeof ProfileAchievementsRoute
+  '/profile/quotes': typeof ProfileQuotesRoute
+  '/profile/settings': typeof ProfileSettingsRoute
+  '/profile/upload': typeof ProfileUploadRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/library'
+    | '/profile'
+    | '/profile/achievements'
+    | '/profile/quotes'
+    | '/profile/settings'
+    | '/profile/upload'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/library'
+    | '/profile'
+    | '/profile/achievements'
+    | '/profile/quotes'
+    | '/profile/settings'
+    | '/profile/upload'
+  id:
+    | '__root__'
+    | '/'
+    | '/library'
+    | '/profile'
+    | '/profile/achievements'
+    | '/profile/quotes'
+    | '/profile/settings'
+    | '/profile/upload'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  LibraryRoute: typeof LibraryRoute
+  ProfileRoute: typeof ProfileRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/library': {
+      id: '/library'
+      path: '/library'
+      fullPath: '/library'
+      preLoaderRoute: typeof LibraryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +140,58 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/profile/upload': {
+      id: '/profile/upload'
+      path: '/upload'
+      fullPath: '/profile/upload'
+      preLoaderRoute: typeof ProfileUploadRouteImport
+      parentRoute: typeof ProfileRoute
+    }
+    '/profile/settings': {
+      id: '/profile/settings'
+      path: '/settings'
+      fullPath: '/profile/settings'
+      preLoaderRoute: typeof ProfileSettingsRouteImport
+      parentRoute: typeof ProfileRoute
+    }
+    '/profile/quotes': {
+      id: '/profile/quotes'
+      path: '/quotes'
+      fullPath: '/profile/quotes'
+      preLoaderRoute: typeof ProfileQuotesRouteImport
+      parentRoute: typeof ProfileRoute
+    }
+    '/profile/achievements': {
+      id: '/profile/achievements'
+      path: '/achievements'
+      fullPath: '/profile/achievements'
+      preLoaderRoute: typeof ProfileAchievementsRouteImport
+      parentRoute: typeof ProfileRoute
+    }
   }
 }
 
+interface ProfileRouteChildren {
+  ProfileAchievementsRoute: typeof ProfileAchievementsRoute
+  ProfileQuotesRoute: typeof ProfileQuotesRoute
+  ProfileSettingsRoute: typeof ProfileSettingsRoute
+  ProfileUploadRoute: typeof ProfileUploadRoute
+}
+
+const ProfileRouteChildren: ProfileRouteChildren = {
+  ProfileAchievementsRoute: ProfileAchievementsRoute,
+  ProfileQuotesRoute: ProfileQuotesRoute,
+  ProfileSettingsRoute: ProfileSettingsRoute,
+  ProfileUploadRoute: ProfileUploadRoute,
+}
+
+const ProfileRouteWithChildren =
+  ProfileRoute._addFileChildren(ProfileRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  LibraryRoute: LibraryRoute,
+  ProfileRoute: ProfileRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
