@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+
+
+@theme {
+    --font-serif: "PTSerif", "sans-serif";
+
+    --color-red-second: #A11038;
+  
+
+}
+
+
+@theme inline {
+	--font-namu: "serif";
+}
+
+@layer base {
+  @font-face {
+      font-family: 'PT Serif';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url("/fonts/pt-serif/PTSerif-Regular.ttf") format("truetype");
+  }
+
+  @font-face {
+      font-family: 'PT Serif';
+      font-style: italic;
+      font-weight: 400;
+      font-display: swap;
+      src: url("/fonts/pt-serif/PTSerif-Italic.ttf") format("truetype");
+  }
+
+  @font-face {
+      font-family: 'PT Serif';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url("/fonts/pt-serif/PTSerif-Bold.ttf") format("truetype");
+  }
+
+  @font-face {
+      font-family: 'PT Serif';
+      font-style: italic;
+      font-weight: 700;
+      font-display: swap;
+      src: url("/fonts/pt-serif/PTSerif-BoldItalic.ttf") format("truetype");
+  }
+}
