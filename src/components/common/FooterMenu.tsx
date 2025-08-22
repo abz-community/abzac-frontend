@@ -26,6 +26,11 @@ const menuItems: MenuItemType[] = [
 		icon: <Profile />,
 		path: "profile",
 	},
+	{
+		name: "Профиль",
+		icon: <Profile />,
+		path: "profile",
+	},
 ];
 
 const FooterMenuItem = ({ item }: { item: MenuItemType }) => {
@@ -36,16 +41,16 @@ const FooterMenuItem = ({ item }: { item: MenuItemType }) => {
 		<Link
 			data-active={currentPath.includes(item.path)}
 			to={item.path}
-			className="flex items-center gap-2 flex-col flex-1/3  text-[#E66589]  data-[active=true]:text-black"
+			className="flex items-center gap-2 flex-col justify-center  data-[active=true]:bg-accent  text-white rounded-full w-[54px] h-[54px]"
 		>
-			{item.icon} {item.name}
+			{item.icon}
 		</Link>
 	);
 };
 
 export const FooterMenu = () => {
 	return (
-		<div className="flex justify-between px-0 items-center h-[75px] border-t border-[#F2E8E8]">
+		<div className="absolute w-[92%] mx-[4%] bottom-6  flex justify-between px-2 items-center h-[65px] bg-gray-second-main rounded-full">
 			{menuItems.map((item) => (
 				<FooterMenuItem item={item} key={item.path} />
 			))}

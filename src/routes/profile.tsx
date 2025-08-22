@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import Settings from "@/icons/settings.svg?react";
 import Upload from "@/icons/upload.svg?react";
-import Quote from "@/icons/quote.svg?react";
 import Achievements from "@/icons/achievements.svg?react";
 import Chevron from "@/icons/chevron.svg?react";
 import type { ReactNode } from "react";
@@ -17,7 +16,7 @@ interface MenuItemType {
 }
 
 const menuItems: MenuItemType[] = [
-	{ name: "Выделенные цитаты", icon: <Quote />, path: "/profile/quotes" },
+	// { name: "Выделенные цитаты", icon: <Quote />, path: "/profile/quotes" },
 	{ name: "Достижения", icon: <Achievements />, path: "/profile/achievements" },
 	{ name: "Загрузить книгу", icon: <Upload />, path: "/profile/upload" },
 ];
@@ -40,6 +39,9 @@ const MenuItem = ({ item }: { item: MenuItemType }) => {
 function RouteComponent() {
 	return (
 		<div className="px-4 w-full">
+			<div className="bg-gray-100 border border-gray-300 rounded-md p-3 mb-4 text-xs font-mono overflow-auto max-h-40">
+				{/* <pre>{JSON.stringify(tgWebAppData, null, 2)}</pre> */}
+			</div>
 			<div className="w-full py-4 w-full flex justify-end ">
 				<Link to="/profile/settings" className=" w-10 h-10 flex justify-end">
 					<Settings />
@@ -50,9 +52,12 @@ function RouteComponent() {
 				<img
 					className="w-[128px] h-[128px] rounded-full overflow-hidden "
 					alt="logo"
-					src="./src/icons/test-avatar.png"
+					// src={user?.photo_url}
 				/>
-				<span className="font-bold text-[22px]">@nickname</span>
+				<div className="font-bold text-[22px] flex">
+					<div className="mt-[3px]">@</div>
+					{/* <div>{user?.username}</div> */}
+				</div>
 			</div>
 
 			<div className="flex gap-3 py-3">
