@@ -37,7 +37,7 @@ export default function RootLayout() {
 
 	return (
 		<SafeAreaView className="bg-main-gray flex-1">
-			<Stack screenOptions={{ headerShown: false, animation: "fade" }} />
+			<Stack screenOptions={{ headerShown: false, animation: "none" }} />
 			<Tabs />
 		</SafeAreaView>
 	);

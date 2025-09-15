@@ -1,23 +1,23 @@
 import { Avatar } from "components/common/avatar";
-import { Text } from "components/common/text";
 import { TouchableOpacity, View } from "react-native";
 import { Feather } from "@expo/vector-icons";
+import { ThemedText } from "components/common/text";
 
 export const Header = () => {
 	return (
 		<View className="flex flex-row  justify-between">
-			<View className="flex flex-row  items-center gap-2">
+			<View className="flex flex-row  items-center gap-4">
 				<Avatar />
 				<View className="flex flex-col gap-2">
-					<Text className="text-white text-[14px]" weight="medium">
+					<ThemedText className="text-white text-[16px]" weight="medium">
 						Привет, username
-					</Text>
-					<Text className="text-[#A29F9F] text-[10px]">
+					</ThemedText>
+					<ThemedText className="text-[#A29F9F] text-[12px]">
 						Добро пожаловать в{" "}
-						<Text className="text-main-brand " weight="medium">
+						<ThemedText className="text-main-brand " weight="medium">
 							Абзац
-						</Text>
-					</Text>
+						</ThemedText>
+					</ThemedText>
 				</View>
 			</View>
 			<View>

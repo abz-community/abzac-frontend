@@ -9,19 +9,18 @@ export type ThemedTextProps = TextProps & {
 	italic?: boolean;
 };
 
-export function Text({
+export function ThemedText({
 	style,
 	lightColor,
 	darkColor,
 	className,
-	weight = "regular", // по умолчанию — regular
+	weight = "regular",
 	italic = false,
 	...rest
 }: ThemedTextProps) {
 	const colorScheme = useColorScheme();
 	const color = colorScheme === "dark" ? darkColor : lightColor;
 
-	// Маппинг весов → fontFamily
 	const getFontFamily = () => {
 		if (italic) {
 			switch (weight) {
