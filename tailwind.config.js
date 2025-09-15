@@ -4,6 +4,16 @@ module.exports = {
 	presets: [require("nativewind/preset")],
 	theme: {
 		extend: {
+			fontFamily: {
+				rubik: ["Rubik", "sans-serif"],
+				rubikRegular: ["Rubik-Regular", "sans-serif"],
+				rubikBold: ["Rubik-Bold", "sans-serif"],
+				rubikItalic: ["Rubik-Italic", "sans-serif"],
+				rubikSemiBold: ["Rubik-SemiBold", "sans-serif"],
+				rubikMedium: ["Rubik-Medium", "sans-serif"],
+				rubikExtraBold: ["Rubik-ExtraBold", "sans-serif"],
+				rubikBlack: ["Rubik-Black", "sans-serif"],
+			},
 			colors: {
 				main: {
 					gray: "#212529",

@@ -1,45 +1,141 @@
 {
-  "expo": {
-    "name": "my-expo-app",
-    "slug": "my-expo-app",
-    "version": "1.0.0",
-    "web": {
-      "favicon": "./assets/favicon.png"
-    },
-    "experiments": {
-      "tsconfigPaths": true
-    },
-    "plugins": [
-      "expo-router"
-    ],
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "y",
-      "infoPlist": {
-        "ITSAppUsesNonExemptEncryption": false
-      }
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
-    },
-    "extra": {
-      "eas": {
-        "projectId": "fd7f621d-2ccd-4199-ad9a-658e928b7c01"
-      }
-    }
-  }
+	"expo": {
+		"name": "my-expo-app",
+		"slug": "my-expo-app",
+		"version": "1.0.0",
+		"web": {
+			"favicon": "./assets/favicon.png"
+		},
+		"experiments": {
+			"tsconfigPaths": true
+		},
+		"plugins": [
+			"expo-router",
+			[
+				"expo-font",
+				{
+					"fonts": [
+						"./assets/fonts/Rubik-Regular.ttf",
+						"./assets/fonts/Rubik-Bold.ttf",
+						"./assets/fonts/Rubik-Italic.ttf",
+						"./assets/fonts/Rubik-BoldItalic.ttf",
+						"./assets/fonts/Rubik-Medium.ttf",
+						"./assets/fonts/Rubik-MediumItalic.ttf",
+						"./assets/fonts/Rubik-SemiBold.ttf",
+						"./assets/fonts/Rubik-SemiBoldItalic.ttf",
+						"./assets/fonts/Rubik-ExtraBold.ttf",
+						"./assets/fonts/Rubik-ExtraBoldItalic.ttf",
+						"./assets/fonts/Rubik-Black.ttf",
+						"./assets/fonts/Rubik-BlackItalic.ttf"
+					],
+					"android": {
+						"fonts": [
+							{
+								"fontFamily": "Rubik",
+								"fontDefinitions": [
+									{
+										"path": "./assets/fonts/Rubik-Regular.ttf",
+										"weight": 400
+									},
+									{
+										"path": "./assets/fonts/Rubik-Medium.ttf",
+										"weight": 500
+									},
+									{
+										"path": "./assets/fonts/Rubik-SemiBold.ttf",
+										"weight": 600
+									},
+									{
+										"path": "./assets/fonts/Rubik-Bold.ttf",
+										"weight": 700
+									},
+									{
+										"path": "./assets/fonts/Rubik-ExtraBold.ttf",
+										"weight": 800
+									},
+									{
+										"path": "./assets/fonts/Rubik-Black.ttf",
+										"weight": 900
+									},
+									{
+										"path": "./assets/fonts/Rubik-Italic.ttf",
+										"weight": 400,
+										"style": "italic"
+									},
+									{
+										"path": "./assets/fonts/Rubik-MediumItalic.ttf",
+										"weight": 500,
+										"style": "italic"
+									},
+									{
+										"path": "./assets/fonts/Rubik-SemiBoldItalic.ttf",
+										"weight": 600,
+										"style": "italic"
+									},
+									{
+										"path": "./assets/fonts/Rubik-BoldItalic.ttf",
+										"weight": 700,
+										"style": "italic"
+									},
+									{
+										"path": "./assets/fonts/Rubik-ExtraBoldItalic.ttf",
+										"weight": 800,
+										"style": "italic"
+									},
+									{
+										"path": "./assets/fonts/Rubik-BlackItalic.ttf",
+										"weight": 900,
+										"style": "italic"
+									}
+								]
+							}
+						]
+					},
+					"ios": {
+						"fonts": [
+							"./assets/fonts/Rubik-Regular.ttf",
+							"./assets/fonts/Rubik-Bold.ttf",
+							"./assets/fonts/Rubik-Italic.ttf",
+							"./assets/fonts/Rubik-BoldItalic.ttf",
+							"./assets/fonts/Rubik-Medium.ttf",
+							"./assets/fonts/Rubik-MediumItalic.ttf",
+							"./assets/fonts/Rubik-SemiBold.ttf",
+							"./assets/fonts/Rubik-SemiBoldItalic.ttf",
+							"./assets/fonts/Rubik-ExtraBold.ttf",
+							"./assets/fonts/Rubik-ExtraBoldItalic.ttf",
+							"./assets/fonts/Rubik-Black.ttf",
+							"./assets/fonts/Rubik-BlackItalic.ttf"
+						]
+					}
+				}
+			]
+		],
+		"orientation": "portrait",
+		"icon": "./assets/icon.png",
+		"userInterfaceStyle": "light",
+		"splash": {
+			"image": "./assets/splash.png",
+			"resizeMode": "contain",
+			"backgroundColor": "#ffffff"
+		},
+		"assetBundlePatterns": ["**/*"],
+		"ios": {
+			"supportsTablet": true,
+			"bundleIdentifier": "y",
+			"infoPlist": {
+				"ITSAppUsesNonExemptEncryption": false
+			}
+		},
+		"android": {
+			"adaptiveIcon": {
+				"foregroundImage": "./assets/adaptive-icon.png",
+				"backgroundColor": "#ffffff"
+			}
+		},
+		"extra": {
+			"eas": {
+				"projectId": "fd7f621d-2ccd-4199-ad9a-658e928b7c01"
+			}
+		}
+	}
 }
