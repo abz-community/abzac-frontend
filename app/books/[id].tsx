@@ -82,7 +82,11 @@ const BottomPart = ({ description }: { description?: string }) => {
 
 	return (
 		<View className="h-full">
-			<View className="rounded-t-[24px] border-t-2 border-l border-r border-[#3E4043]">
+			<View
+				className="rounded-t-[24px] 
+            border-t-2 border-l border-r 
+            border-[#3E4043]"
+			>
 				<ThemedText></ThemedText>
 			</View>
 
@@ -131,14 +135,8 @@ const BottomPart = ({ description }: { description?: string }) => {
 			)}
 			{mode === "progress" && (
 				<View className="px-6 flex flex-col gap-8">
-					<View className="border-[#3E4043] border rounded-[24px] p-4 flex flex-col gap-3">
-						<ThemedText
-							className="text-white text-center text-[16px]"
-							weight="medium"
-						>
-							Глава 1 - Название главы
-						</ThemedText>
-
+					{/* border-[#3E4043] border rounded-[24px] */}
+					<View className=" flex flex-col gap-3">
 						<View className="flex flex-col gap-2">
 							<View className="flex flex-row  justify-between">
 								<ThemedText

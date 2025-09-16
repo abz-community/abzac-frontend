@@ -7,6 +7,7 @@ interface ProgressBarProps {
 	height?: number;
 	radius?: number;
 	showPercentage?: boolean;
+	className?: string;
 }
 
 export const ProgressBar = ({
@@ -16,12 +17,13 @@ export const ProgressBar = ({
 	height = 8,
 	radius = 6,
 	showPercentage = false,
+	className = "",
 }: ProgressBarProps) => {
 	const percentage = Math.min(100, Math.max(0, progress));
 	const fillWidth: DimensionValue = `${percentage}%`;
 
 	return (
-		<View className="items-center w-full">
+		<View className={`items-center w-full ${className}`}>
 			<View
 				className="w-full overflow-hidden"
 				style={{
