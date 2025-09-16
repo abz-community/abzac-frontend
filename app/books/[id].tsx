@@ -129,18 +129,21 @@ const BottomPart = ({ description }: { description?: string }) => {
 			</View>
 
 			{mode === "book" && (
-				<ThemedText className="text-white px-6 text-[14px]" weight="medium">
+				<ThemedText
+					className="text-white px-6 text-[14px]"
+					weight="medium"
+					style={{ lineHeight: 18 }}
+				>
 					{description}
 				</ThemedText>
 			)}
 			{mode === "progress" && (
 				<View className="px-6 flex flex-col gap-8">
-					{/* border-[#3E4043] border rounded-[24px] */}
 					<View className=" flex flex-col gap-3">
 						<View className="flex flex-col gap-2">
 							<View className="flex flex-row  justify-between">
 								<ThemedText
-									className="text-main-textSecond text-[12px]"
+									className="text-main-textSecond text-[14px]"
 									weight="medium"
 								>
 									Страница{" "}
@@ -150,7 +153,7 @@ const BottomPart = ({ description }: { description?: string }) => {
 									из 590
 								</ThemedText>
 								<ThemedText
-									className="text-main-textSecond text-[12px]"
+									className="text-main-textSecond text-[14px]"
 									weight="medium"
 								>
 									64%
