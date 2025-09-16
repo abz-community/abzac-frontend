@@ -14,7 +14,7 @@ export function ThemedText({
 	lightColor,
 	darkColor,
 	className,
-	weight = "regular",
+	weight = "medium",
 	italic = false,
 	...rest
 }: ThemedTextProps) {
