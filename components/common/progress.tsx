@@ -2,14 +2,14 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import Svg, { Circle } from "react-native-svg";
 
-const ProgressCircleBar = ({ percent }: { percent: number }) => {
+const ProgressCircleBar = ({ progress }: { progress: number }) => {
 	const radius = 6;
 	const strokeWidth = 2.5;
 	const diameter = (radius + strokeWidth / 2) * 2;
 
 	const circumference = 2 * Math.PI * radius;
 	const strokeDasharray = circumference;
-	const strokeDashoffset = circumference - (percent / 100) * circumference;
+	const strokeDashoffset = circumference - (progress / 100) * circumference;
 
 	const rotation = -90;
 

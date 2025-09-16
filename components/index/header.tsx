@@ -5,7 +5,7 @@ import { ThemedText } from "components/common/text";
 
 export const Header = () => {
 	return (
-		<View className="flex flex-row  justify-between">
+		<View className="flex flex-row  justify-between px-4">
 			<View className="flex flex-row  items-center gap-4">
 				<Avatar />
 				<View className="flex flex-col gap-2">
