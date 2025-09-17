@@ -60,7 +60,10 @@ export default function BookDetail() {
 								</ThemedText>
 							</TouchableOpacity>
 
-							<TouchableOpacity className="flex items-center flex-col gap-2">
+							<TouchableOpacity
+								className="flex items-center flex-col gap-2"
+								onPress={() => router.push(`/books/reader/${id}`)}
+							>
 								<View className="bg-main-brand w-[54px] h-[54px]  rounded-full flex items-center justify-center">
 									<Feather name="book-open" size={24} color={"white"} />
 								</View>
@@ -130,9 +133,9 @@ const BottomPart = ({ description }: { description?: string }) => {
 
 			{mode === "book" && (
 				<ThemedText
-					className="text-white px-6 text-[14px]"
+					className="text-white px-6 text-[14px] mt-4"
 					weight="medium"
-					style={{ lineHeight: 18 }}
+					style={{ lineHeight: 20 }}
 				>
 					{description}
 				</ThemedText>

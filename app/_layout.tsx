@@ -1,11 +1,11 @@
-import { View, TouchableOpacity } from "react-native";
+import { View, TouchableOpacity, Animated, Easing } from "react-native";
 import { SplashScreen, Stack, usePathname, useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import "../global.css";
 
 import { MaterialIcons, Feather } from "@expo/vector-icons";
 import { useFonts } from "expo-font";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -47,63 +47,104 @@ export const Tabs = () => {
 	const router = useRouter();
 	const pathname = usePathname();
 
+	const animatedValue = useRef(new Animated.Value(150)).current;
+	const [isVisible, setIsVisible] = useState(false);
+
+	const shouldShow = !pathname.includes("reader");
+
+	useEffect(() => {
+		if (shouldShow) {
+			setIsVisible(true);
+			Animated.timing(animatedValue, {
+				toValue: 0,
+				duration: 350,
+				easing: Easing.out(Easing.cubic),
+				useNativeDriver: true,
+			}).start();
+		} else {
+			Animated.timing(animatedValue, {
+				toValue: 150,
+				duration: 300,
+				easing: Easing.in(Easing.cubic),
+				useNativeDriver: true,
+			}).start(() => {
+				setIsVisible(false);
+			});
+		}
+	}, [shouldShow, animatedValue]);
+
+	if (!isVisible) {
+		return null;
+	}
+
 	const isActive = (path: string) => pathname === path;
 
 	return (
-		<View className="absolute bottom-10 left-0 right-0 mx-6 flex  rounded-full bg-main-graySecond">
-			<View className="flex-row w-full justify-between px-2 h-[64px] items-center">
-				<TouchableOpacity
-					onPress={() => router.push("/")}
-					className={`w-14 h-14 items-center justify-center rounded-full  ${
-						isActive("/") ? "bg-main-brand" : ""
-					}`}
-				>
-					<MaterialIcons
-						name="home"
-						size={24}
-						color={isActive("/") ? "white" : "#9ca3af"}
-					/>
-				</TouchableOpacity>
+		<Animated.View
+			style={{
+				transform: [{ translateY: animatedValue }],
+				position: "absolute",
+				bottom: 40,
+				left: 24,
+				right: 24,
+				zIndex: 10,
+			}}
+		>
+			<View className="flex rounded-full bg-main-graySecond">
+				<View className="flex-row w-full justify-between px-2 h-[64px] items-center">
+					<TouchableOpacity
+						onPress={() => router.push("/")}
+						className={`w-14 h-14 items-center justify-center rounded-full ${
+							isActive("/") ? "bg-main-brand" : ""
+						}`}
+					>
+						<MaterialIcons
+							name="home"
+							size={24}
+							color={isActive("/") ? "white" : "#9ca3af"}
+						/>
+					</TouchableOpacity>
 
-				<TouchableOpacity
-					onPress={() => router.push("/likes")}
-					className={`w-14 h-14 items-center justify-center rounded-full  ${
-						isActive("/likes") ? "bg-main-brand" : ""
-					}`}
-				>
-					<Feather
-						name="heart"
-						size={24}
-						color={isActive("/likes") ? "white" : "#9ca3af"}
-					/>
-				</TouchableOpacity>
+					<TouchableOpacity
+						onPress={() => router.push("/likes")}
+						className={`w-14 h-14 items-center justify-center rounded-full ${
+							isActive("/likes") ? "bg-main-brand" : ""
+						}`}
+					>
+						<Feather
+							name="heart"
+							size={24}
+							color={isActive("/likes") ? "white" : "#9ca3af"}
+						/>
+					</TouchableOpacity>
 
-				<TouchableOpacity
-					onPress={() => router.push("/achivements")}
-					className={`w-14 h-14 items-center justify-center rounded-full  ${
-						isActive("/achivements") ? "bg-main-brand" : ""
-					}`}
-				>
-					<MaterialIcons
-						name="emoji-events"
-						size={24}
-						color={isActive("/achivements") ? "white" : "#9ca3af"}
-					/>
-				</TouchableOpacity>
+					<TouchableOpacity
+						onPress={() => router.push("/achivements")}
+						className={`w-14 h-14 items-center justify-center rounded-full ${
+							isActive("/achivements") ? "bg-main-brand" : ""
+						}`}
+					>
+						<MaterialIcons
+							name="emoji-events"
+							size={24}
+							color={isActive("/achivements") ? "white" : "#9ca3af"}
+						/>
+					</TouchableOpacity>
 
-				<TouchableOpacity
-					onPress={() => router.push("/profile")}
-					className={`w-14 h-14 items-center justify-center rounded-full  ${
-						isActive("/profile") ? "bg-main-brand" : ""
-					}`}
-				>
-					<MaterialIcons
-						name="person"
-						size={24}
-						color={isActive("/profile") ? "white" : "#9ca3af"}
-					/>
-				</TouchableOpacity>
+					<TouchableOpacity
+						onPress={() => router.push("/profile")}
+						className={`w-14 h-14 items-center justify-center rounded-full ${
+							isActive("/profile") ? "bg-main-brand" : ""
+						}`}
+					>
+						<MaterialIcons
+							name="person"
+							size={24}
+							color={isActive("/profile") ? "white" : "#9ca3af"}
+						/>
+					</TouchableOpacity>
+				</View>
 			</View>
-		</View>
+		</Animated.View>
 	);
 };
