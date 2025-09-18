@@ -5,6 +5,8 @@ import {
 	TouchableOpacity,
 	NativeSyntheticEvent,
 	NativeScrollEvent,
+	Modal,
+	Pressable,
 } from "react-native";
 
 import { ThemedText } from "components/common/text";
@@ -83,22 +85,54 @@ export default function Reader() {
 			});
 		}
 	};
-
+	const [isVisible, setIsVisible] = useState(false);
 	return (
 		<View className="flex-1 bg-main-gray flex-row">
 			<View style={{ flex: 1 }}>
 				<View className="p-4 flex flex-row items-center justify-between">
-					<TouchableOpacity className="w-8 h-8 flex items-center justify-center bg-main-brand rounded-[8px] ">
+					<TouchableOpacity
+						onPress={() => setIsVisible(true)}
+						className="w-8 h-8 flex items-center justify-center bg-main-brand rounded-[8px] "
+					>
 						<SparklesIcon size={22} />
 					</TouchableOpacity>
 
 					<ThemedText className="text-white text-[16px]" weight="bold">
-						Название книги
+						Абзац 1
 					</ThemedText>
 					<TouchableOpacity onPress={() => router.back()}>
 						<MaterialIcons name="close" size={32} color={"white"} />
 					</TouchableOpacity>
 				</View>
+				<Modal
+					visible={isVisible}
+					transparent
+					animationType="fade"
+					onRequestClose={() => setIsVisible(false)}
+				>
+					<Pressable
+						className="flex-1 items-center justify-center bg-[#F03A52]/20"
+						onPress={() => setIsVisible(false)}
+					>
+						<View
+							className="bg-main-gray p-6 rounded-2xl w-4/5"
+							onStartShouldSetResponder={() => true}
+						>
+							<ThemedText className="text-lg text-white font-bold mb-4">
+								Привет 👋
+							</ThemedText>
+
+							<TouchableOpacity
+								className="mt-6 bg-main-brand p-3 rounded-xl"
+								onPress={() => setIsVisible(false)}
+							>
+								<ThemedText className="text-white text-center">
+									Закрыть
+								</ThemedText>
+							</TouchableOpacity>
+						</View>
+					</Pressable>
+				</Modal>
 
 				<View className="flex flex-row">
 					<View className="items-center justify-center px-2">
